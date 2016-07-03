@@ -6,6 +6,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/usr/src/app
-    command: npm start
+    command: npm run dev
+    links:
+      - mongo
     ports:
-      - "8100:8100"
+      - "3090:3090"
+  mongo:
+    image: mongo:3.3
+    ports:
+      - "27017:27017"
